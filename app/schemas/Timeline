@@ -1,0 +1,31 @@
+const { attributes } = require('structure');
+
+const Timeline = attributes({
+    type: {
+        type: String,
+        default: 'TimelineType',
+        equal: 'TimelineType'
+    },
+    notes: String,
+    createdOn: {
+        type: Number,
+        required: true,
+        default: parseInt(new Date().getTime())
+    },
+    createdBy: {
+        type: String,
+        required: true,
+        default: '$SYSTEM$'
+    },
+    updatedOn: {
+        type: Number,
+        default: parseInt(new Date().getTime())
+    }
+})(class Timeline {
+    toString()
+    {
+        return JSON.stringify(this);
+    }
+});
+
+module.exports = Timeline;
